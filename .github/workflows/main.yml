@@ -1,0 +1,25 @@
+name: Access VS Code in GitHub Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start VS Code server
+      run: npx vscode-to-github@latest --branch main --remote origin --repository https://www.github.com/Githubrealman1/ddos-udp-bgmi-and-bubg.git 
